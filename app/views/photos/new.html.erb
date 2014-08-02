@@ -1,0 +1,12 @@
+<%= form_for @photo do |f| %>
+
+  <%= f.label :full_name %>
+  <%= f.text_field :name %>
+<br>
+  <%= f.file_field :avatar %>
+<br>
+  <%= f.submit %>
+
+<% end %>
+
+<a href= "/photos">Go Back</a>

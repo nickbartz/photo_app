@@ -1,0 +1,5 @@
+	<%= image_tag @photo.avatar.url %><br>
+	<%= form_tag(session_path, method: :put) do %>
+		<%= text_field_tag "answer" %>
+	<% end %>
+

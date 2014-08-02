@@ -1,0 +1,8 @@
+<a href= "/sessions/new">New Test</a>
+<ul>
+  <% @sessions.each do |item| %>
+    <li><%= link_to item.session_name, item %></li>
+  <% end %>
+</ul>
+<br>
+<a href= "/">Back</a>

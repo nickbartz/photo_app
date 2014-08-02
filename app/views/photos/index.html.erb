@@ -1,0 +1,8 @@
+<a href= "/photos/new">Add New Photo</a>
+<ul>
+  <% @photos.each do |item| %>
+    <li><%= link_to item.name, item %></li>
+  <% end %>
+</ul>
+
+<a href= "/">Go Back</a>
