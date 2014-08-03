@@ -1,22 +1,36 @@
 class SessionsController < ApplicationController
 
 	def index
-		@sessions = Session.all 
+		@sessions = Session.all
 	end
 
 	def show
-		@photo = Session.find(params[:id]).photos.first
+		@questions = Session.find(params[:id]).questions
+		@score = @questions.length
+		if @score >= 1
+			@photo_id = Photo.find(@questions.first.photo_id)
+		end 
 	end
 
 	def update
-		@first = Session.find(params[:id]).photos.first
-		
-		@answer = params[:answer]
-		if @answer == @first.name
-			Session.find(params[:id]).photos.delete(@first)
-		end
+		@session = Session.find(params[:id])
+		@question = @session.questions.first
+		if @session.questions.length >= 1 
+			if params[:answer] == Photo.find(@question.photo_id).name
+				@question.delete
+				flash[:success] = "Correct!"
+			elsif params[:answer].empty?
+				@session.photos << Photo.find(@question.photo_id)
+				@question.delete
+				flash[:info] = "Better luck next time"
+			else
+				@session.photos << Photo.find(@question.photo_id)
+				@question.delete
+				flash[:error] = "Wrong!"
+			end
+		end 
 		redirect_to session_path
-	end 
+	end
 
 	def new
 		@session = Session.new
@@ -25,13 +39,15 @@ class SessionsController < ApplicationController
 	def create
 		@session = Session.new(session_params)
 		@photos = Photo.all
-		@session.photos << @photos
+		@session.photos << @photos[0..5]
 		@session.save
 		redirect_to sessions_path
 	end
 
-	def delete
-	end 
+	def destroy
+    	Session.find(params[:id]).destroy
+    	redirect_to sessions_url
+  	end 
 
 	private
 		def session_params

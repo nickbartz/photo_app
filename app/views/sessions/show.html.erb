@@ -1,5 +1,9 @@
-	<%= image_tag @photo.avatar.url %><br>
-	<%= form_tag(session_path, method: :put) do %>
-		<%= text_field_tag "answer" %>
+<div class="row">
+	<div class ="alert alert-info"><%= @score %> to go</div>
+	<% if @score.zero? %>
+	<%= render "finished" %>
+	<% else %>
+	<%= render "question" %>
 	<% end %>
-
+	<br><a href= "/sessions">Go back to sessions</a>	
+</div>

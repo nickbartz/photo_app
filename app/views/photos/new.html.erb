@@ -1,12 +1,15 @@
+<div class="row">
+	<h1> Add New Person </h1>
+
 <%= form_for @photo do |f| %>
 
   <%= f.label :full_name %>
   <%= f.text_field :name %>
-<br>
-  <%= f.file_field :avatar %>
-<br>
-  <%= f.submit %>
+  <%= f.file_field :avatar  %>
+<br><br>
+  <%= f.submit "Submit" %>
 
 <% end %>
 
 <a href= "/photos">Go Back</a>
+</div>

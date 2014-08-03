@@ -1,0 +1,14 @@
+	<% if flash[:notice] %>
+  	<%= flash[:notice] %>
+	<% end %>
+	<h1>Who is this?</h1><br>
+	<%= link_to "Cheat", photo_path(@photo_id) %><br><br>
+	<br>
+		<%= form_tag(session_path, method: :put) do %>
+		<%= text_field_tag "answer" %>
+		<%= button_tag "Submit Answer" %>
+		<%= button_tag "Don't Know", data: :answer %> 
+	<% end %>
+
+
+	<%= image_tag @photo_id.avatar.url %><br><br>

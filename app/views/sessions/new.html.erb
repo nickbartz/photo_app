@@ -1,8 +1,10 @@
-<%= form_for @session do |f| %>
+<div class="row">
+		<%= form_for @session do |f| %>
 
-  <%= f.label :session_name %>
-  <%= f.text_field :session_name %>
+		  <%= f.label :session_name %>
+		  <%= f.text_field :session_name %>
 
-  <%= f.submit %>
+		  <%= f.submit %>
 
-<% end %>
+		<% end %>
+</div>

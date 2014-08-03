@@ -1,3 +1,4 @@
 class Session < ActiveRecord::Base
-	has_and_belongs_to_many :photos
+	has_many :questions
+	has_many :photos, through: :questions	
 end

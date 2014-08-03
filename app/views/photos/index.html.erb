@@ -1,8 +1,12 @@
-<a href= "/photos/new">Add New Photo</a>
-<ul>
-  <% @photos.each do |item| %>
-    <li><%= link_to item.name, item %></li>
-  <% end %>
-</ul>
-
-<a href= "/">Go Back</a>
+<div class="row">
+	<a href= "/photos/new">Add New Photo</a><br>
+	<a href= "/">Go Back</a>
+	<br>
+	<br>
+	<body><b>Existing People</b></body>
+	<ul>
+	  <% @photos.each do |item| %>
+	    <li><%= link_to item.name, item %></li>
+	  <% end %>
+	</ul>
+<div>
