@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
 		@session = Session.find(params[:id])
 		@question = @session.questions.first
 		if @session.questions.length >= 1 
-			if params[:answer].capitalize == Photo.find(@question.photo_id).name
+			if params[:answer] == Photo.find(@question.photo_id).name
 				@question.delete
 				flash[:success] = "Correct!"
 			elsif params[:answer].empty?
